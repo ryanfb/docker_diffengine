@@ -12,10 +12,12 @@ Run the initial configuration with:
 
     docker run -ti -v /path/to/diffengine/directory:/diffengine ryanfb/diffengine diffengine /diffengine
 
+
 Run a configured instance as a daemon with the following (or change `-d` back to `-ti` for an interactive run):
 
     docker run -d -v /path/to/diffengine/directory:/diffengine ryanfb/diffengine
 
+
 Or override `DIFFENGINE_TIMEOUT` with e.g.:
 
-    docker run -d -v /path/to/diffengine/directory:/diffengine -e DIFFENGINE_TIMEOUT="2h" ryanfb/diffengine
+    docker run -d -v /path/to/diffengine/directory:/diffengine -e DIFFENGINE_TIMEOUT=2h ryanfb/diffengine
