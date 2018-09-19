@@ -16,8 +16,7 @@ RUN mv $PHANTOM_JS /usr/local/share
 RUN ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
 
 ADD run-diffengine.sh /run-diffengine.sh
-ADD crontab /etc/cron.d/diffengine-cron
-RUN chmod 0644 /etc/cron.d/diffengine-cron
+ADD setup-crontab.sh /setup-crontab.sh
 RUN touch /var/log/cron.log
 
 RUN mkdir /diffengine
@@ -27,4 +26,4 @@ VOLUME ["/diffengine"]
 
 ENV DIFFENGINE_TIMEOUT 1h
 
-CMD env >> /etc/environment && cron && tail -f /diffengine/diffengine.log
+CMD env >> /etc/environment && /setup-crontab.sh && cron && tail -f /diffengine/diffengine.log
