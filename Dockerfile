@@ -1,7 +1,7 @@
 FROM python:3.6-slim
 MAINTAINER ryan.baumann@gmail.com
 
-RUN pip install --process-dependency-links diffengine
+RUN pip install diffengine
 
 RUN apt-get update && apt-get install -y cron locales-all \
       build-essential chrpath libssl-dev libxft-dev \

@@ -2,7 +2,7 @@ FROM arm64v8/python:3.6-slim-stretch
 MAINTAINER ryan.baumann@gmail.com
 COPY qemu-aarch64-static /usr/bin/
 
-RUN pip install --process-dependency-links diffengine
+RUN pip install diffengine
 
 RUN apt-get update && apt-get install -y cron locales-all \
       build-essential chrpath libssl-dev libxft-dev \
