@@ -1,0 +1,25 @@
+FROM arm32v7/python:3.6-slim-stretch
+MAINTAINER ryan.baumann@gmail.com
+
+RUN pip install --process-dependency-links diffengine
+
+RUN apt-get update && apt-get install -y cron locales-all \
+      build-essential chrpath libssl-dev libxft-dev \
+      libfreetype6 libfreetype6-dev \
+      libfontconfig1 libfontconfig1-dev \
+      wget
+
+ADD https://github.com/fg2it/phantomjs-on-raspberry/raw/master/rpi-1-2-3/wheezy-jessie/v2.1.1/phantomjs /usr/local/bin/phantomjs
+
+ADD run-diffengine.sh /run-diffengine.sh
+ADD setup-crontab.sh /setup-crontab.sh
+RUN touch /var/log/cron.log
+
+RUN mkdir /diffengine
+RUN touch /diffengine/diffengine.log /tmp/diffengine.log
+
+VOLUME ["/diffengine"]
+
+ENV DIFFENGINE_TIMEOUT 1h
+
+CMD env >> /etc/environment && /setup-crontab.sh && cron && tail -f /diffengine/diffengine.log
