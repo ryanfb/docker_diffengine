@@ -2,6 +2,8 @@
 
 BUILD_ARCH=$(echo "${DOCKERFILE_PATH}" | cut -d '.' -f 2)
 
+echo "${DOCKERFILE_PATH}: ${BUILD_ARCH}"
+
 [ "${BUILD_ARCH}" == "Dockerfile" ] && \
     { echo 'qemu-user-static: Download not required for current arch'; exit 0; }
 
