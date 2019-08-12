@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y cron locales-all \
       build-essential chrpath libssl-dev libxft-dev \
       libfreetype6 libfreetype6-dev \
       libfontconfig1 libfontconfig1-dev \
-      wget zlib1g-dev libjpeg-dev
+      wget zlib1g-dev libjpeg-dev libxml2-dev libxslt1-dev python-dev
 
 RUN pip install https://github.com/edsu/htmldiff/tarball/master#egg=htmldiff-0.2
 RUN pip install diffengine
