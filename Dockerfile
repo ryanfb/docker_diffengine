@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y cron locales-all \
       build-essential chrpath libssl-dev libxft-dev \
       libfreetype6 libfreetype6-dev \
       libfontconfig1 libfontconfig1-dev \
-      wget zlib1g-dev
+      wget zlib1g-dev libjpeg-dev
 
 ENV PHANTOM_JS phantomjs-1.9.8-linux-x86_64
 RUN wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2

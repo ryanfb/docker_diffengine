@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y cron locales-all \
       build-essential chrpath libssl-dev libxft-dev \
       libfreetype6 libfreetype6-dev \
       libfontconfig1 libfontconfig1-dev \
-      wget zlib1g-dev
+      wget zlib1g-dev libjpeg-dev
 
 ADD https://github.com/fg2it/phantomjs-on-raspberry/releases/download/v2.1.1-stretch-arm64/phantomjs /usr/local/bin/phantomjs
 
