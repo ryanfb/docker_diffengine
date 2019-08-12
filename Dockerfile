@@ -1,14 +1,14 @@
 FROM python:3.6-slim
 MAINTAINER ryan.baumann@gmail.com
 
-RUN pip install https://github.com/edsu/htmldiff/tarball/master#egg=htmldiff-0.2
-RUN pip install diffengine
-
 RUN apt-get update && apt-get install -y cron locales-all \
       build-essential chrpath libssl-dev libxft-dev \
       libfreetype6 libfreetype6-dev \
       libfontconfig1 libfontconfig1-dev \
       wget zlib1g-dev libjpeg-dev
+
+RUN pip install https://github.com/edsu/htmldiff/tarball/master#egg=htmldiff-0.2
+RUN pip install diffengine
 
 ENV PHANTOM_JS phantomjs-1.9.8-linux-x86_64
 RUN wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2

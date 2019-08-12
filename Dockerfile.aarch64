@@ -2,14 +2,14 @@ FROM arm64v8/python:3.6-slim-stretch
 MAINTAINER ryan.baumann@gmail.com
 COPY qemu-aarch64-static /usr/bin/
 
-RUN pip install https://github.com/edsu/htmldiff/tarball/master#egg=htmldiff-0.2
-RUN pip install diffengine
-
 RUN apt-get update && apt-get install -y cron locales-all \
       build-essential chrpath libssl-dev libxft-dev \
       libfreetype6 libfreetype6-dev \
       libfontconfig1 libfontconfig1-dev \
       wget zlib1g-dev libjpeg-dev
+
+RUN pip install https://github.com/edsu/htmldiff/tarball/master#egg=htmldiff-0.2
+RUN pip install diffengine
 
 ADD https://github.com/fg2it/phantomjs-on-raspberry/releases/download/v2.1.1-stretch-arm64/phantomjs /usr/local/bin/phantomjs
 
