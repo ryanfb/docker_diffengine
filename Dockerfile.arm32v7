@@ -1,5 +1,6 @@
 FROM arm32v7/python:3.6-slim-stretch
 MAINTAINER ryan.baumann@gmail.com
+COPY qemu-arm-static /usr/bin/
 
 RUN pip install --process-dependency-links diffengine
 
