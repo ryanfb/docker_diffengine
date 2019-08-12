@@ -2,6 +2,11 @@
 
 BUILD_ARCH=$(echo "${DOCKERFILE_PATH}" | cut -d '.' -f 2)
 
+if [ -z ${DOCKERFILE_PATH+x} ]; then
+  echo "DOCKERFILE_PATH unset, skipping"
+  exit 0
+fi
+
 [ "${BUILD_ARCH}" == "Dockerfile" ] && \
     { echo 'qemu-user-static: Registration not required for current arch'; exit 0; }
 
