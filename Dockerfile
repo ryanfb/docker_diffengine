@@ -1,6 +1,7 @@
 FROM python:3.6-slim
 MAINTAINER ryan.baumann@gmail.com
 
+RUN pip install https://github.com/edsu/htmldiff/tarball/master#egg=htmldiff-0.2
 RUN pip install diffengine
 
 RUN apt-get update && apt-get install -y cron locales-all \
