@@ -22,4 +22,4 @@ Or override `DIFFENGINE_TIMEOUT` with e.g.:
 
     docker run -d -v /path/to/diffengine/directory:/diffengine -e DIFFENGINE_TIMEOUT=2h ryanfb/diffengine
 
-You can also set the `CRON_SCHEUDLE` environment variable to specify a custom [cron schedule expression](https://crontab.guru/) for how frequently you want `diffengine` to be run (default: `* * * * *`, i.e. every minute).
+You can also set the `CRON_SCHEDULE` environment variable to specify a custom [cron schedule expression](https://crontab.guru/) for how frequently you want `diffengine` to be run (default: `* * * * *`, i.e. every minute).
