@@ -1,4 +1,4 @@
-FROM arm64v8/python:3.6-slim-stretch
+FROM arm64v8/python:3.6-slim-buster
 MAINTAINER ryan.baumann@gmail.com
 COPY qemu-aarch64-static /usr/bin/
 
@@ -6,13 +6,14 @@ RUN apt-get update && apt-get install -y cron locales-all \
       build-essential chrpath libssl-dev libxft-dev \
       libfreetype6 libfreetype6-dev \
       libfontconfig1 libfontconfig1-dev \
-      wget zlib1g-dev libjpeg-dev libxml2-dev libxslt1-dev python-dev
+      wget zlib1g-dev libjpeg-dev libxml2-dev libxslt1-dev python-dev \
+      phantomjs
 
 RUN pip install https://github.com/edsu/htmldiff/tarball/master#egg=htmldiff-0.2
 RUN pip install diffengine
 
-ADD https://github.com/fg2it/phantomjs-on-raspberry/releases/download/v2.1.1-stretch-arm64/phantomjs /usr/local/bin/phantomjs
-RUN chmod a+x /usr/local/bin/phantomjs
+ENV QT_QPA_PLATFORM offscreen
+RUN phantomjs --version
 
 ADD run-diffengine.sh /run-diffengine.sh
 ADD setup-crontab.sh /setup-crontab.sh
